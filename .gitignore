@@ -1,0 +1,11 @@
+# Git
+.git
+
+# OS
+.DS_Store
+
+# python generic
+two1tools.egg-info/
+
+# FTP
+.remote-sync.json
