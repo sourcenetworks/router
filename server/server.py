@@ -40,7 +40,8 @@ def serve_logon():
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    response = b"""HTTP/1.1" 200 - \
+    response = b"""HTTP/1.1" 200 -
+                Content-Type: text/plain
         <!doctype html>
 
         <html lang="en">
