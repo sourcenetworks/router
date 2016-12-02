@@ -4,6 +4,7 @@ import signal
 import socket
 import struct
 from payment import check_payment
+import requests
 
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
@@ -25,8 +26,9 @@ def free_proc(signum, frame):
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    print(request.decode())
-    client_connection.sendall(response)
+    r = requests.get('http://localhost:5000/')
+    print(r.raw)
+    client_connection.sendall("hi")
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
