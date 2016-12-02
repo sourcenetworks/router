@@ -6,7 +6,7 @@ registered = False
 
 @app.route('/')
 def serve_logon():
-    return send_static_file("logon.html")
+    return app.send_static_file("logon.html")
 
 def check_payment(request):
     if registered == False:
