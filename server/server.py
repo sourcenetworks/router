@@ -35,7 +35,7 @@ def serve_logon():
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    response = requests.get("/")
+    response = requests.get("::5000/")
     client_connection.sendall(response)
 
 def serve_forever():
