@@ -40,12 +40,9 @@ def serve_logon():
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    response = """\
-    HTTP/1.1 301 Moved Permanently
-    Location: http://127.0.0.1:5000/
-    Content-Type: text/html
-    """
-    client_connection.sendall(response)
+    r = requests.get("http://127.0.0.1:5000/"))
+    print(r.content)
+    client_connection.sendall(r.content)
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
