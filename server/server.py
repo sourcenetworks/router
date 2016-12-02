@@ -31,10 +31,10 @@ def handle_request(client_connection):
     response = b"""\
      HTTP/1.1 200 OK
      Date: Fri, 31 Dec 1999 23:59:59 GMT
-     Content-Type: text/plain
+     Content-Type: HTML
      Content-Length: 4
 
-     meep
+     <html><body><h1>Hello, world</h1></body></html>
      """
     client_connection.sendall(response)
 
