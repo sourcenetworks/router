@@ -29,9 +29,26 @@ def handle_request(client_connection):
     #r = requests.get('http://localhost:5000/')
     http_response = b"""\
 HTTP/1.1 200 OK
+content-length: 287
+content-type: text/html
 
-Hello, World!
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Source WiFi</title>
+  <meta name="Source WiFi" content="Internet made ubiquitous">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+  <img src="../img/source.png" class="logo">
+</body>
+</html>
 """
+
     client_connection.sendall(http_response)
 
 def serve_forever():
