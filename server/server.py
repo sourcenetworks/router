@@ -4,10 +4,8 @@ import signal
 import socket
 import struct
 
-from two1router.server import api
-
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
-REQUEST_QUEUE_SIZE = 1024
+REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
 SO_ORIGINAL_DST = 80
 
 def free_proc(signum, frame):
@@ -23,21 +21,12 @@ def free_proc(signum, frame):
         if pid == 0:  # no more zombies
             return
 
-
+""" The request object is a plain text representation of the
+    inbound request """
 def handle_request(client_connection):
     request = client_connection.recv(1024)
-
-    request_notify(request)
-
-    http_response = b"""\
-HTTP/1.1 200 OK
-Date: Fri, 31 Dec 1999 23:59:59 GMT
-Content-Type: text/plain
-Content-Length: 4
-
-meep
-"""
-    client_connection.sendall(http_response)
+    response = check_payment(request)
+    client_connection.sendall(response)
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
