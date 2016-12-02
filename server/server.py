@@ -3,6 +3,7 @@ import os
 import signal
 import socket
 import struct
+from payment import check_payment
 
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
