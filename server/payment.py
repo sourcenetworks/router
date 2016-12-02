@@ -1,11 +1,10 @@
-from flask import send_static_file
+from flask import render_template
 
-app = Flask(__name__, static_url_path="/templates/views/")
 
 registered = False
 
 def serve_logon():
-    return send_static_file("logon.html")
+    return render_template("logon.html")
 
 def check_payment(request):
     if registered == False:
