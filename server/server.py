@@ -50,7 +50,7 @@ content-type: text/html
 </body>
 </html>
 """
-    client_connection.sendall(r.content)
+    client_connection.sendall(response)
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
