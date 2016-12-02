@@ -6,7 +6,7 @@ import struct
 from payment import check_payment
 
 import requests
-from flask import Flask, server_
+from flask import Flask, server
 app = Flask(__name__)
 
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
