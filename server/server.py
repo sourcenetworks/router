@@ -42,7 +42,7 @@ def handle_request(client_connection):
     request = client_connection.recv(1024)
     r = requests.get("http://127.0.0.1:5000/")
     print(r.content)
-    r.content = """GET / HTTP/1.1" 200 - \
+    r.content = b"""GET / HTTP/1.1" 200 - \
         <!doctype html>
 
         <html lang="en">
