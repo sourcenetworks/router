@@ -10,7 +10,7 @@ from flask import Flask, send_from_directory
 app = Flask(__name__)
 
 STATICFILES_DIRS = (
-    os.path.join(os.path.dirname(__file__), "static")
+    os.path.join(os.path.dirname(__file__), "static", "views")
 )
 
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
@@ -32,8 +32,7 @@ def free_proc(signum, frame):
 
 @app.route("/")
 def serve_logon():
-    return send_from_directory(os.path.join(STATICFILES_DIRS, "views"),
-        "logon.html")
+    return send_from_directory(STATICFILES_DIRS, "logon.html")
 
 """ The request object is a plain text representation of the
     inbound request """
