@@ -24,6 +24,7 @@ def free_proc(signum, frame):
 """ The request object is a plain text representation of the
     inbound request """
 def handle_request(client_connection):
+    print('Handling request')
     request = client_connection.recv(1024)
     response = check_payment(request)
     client_connection.sendall(response)
