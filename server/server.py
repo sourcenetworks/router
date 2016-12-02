@@ -4,7 +4,7 @@ import signal
 import socket
 import struct
 
-SERVER_ADDRESS = (HOST, PORT) = '', 80
+SERVER_ADDRESS = (HOST, PORT) = '', 9090
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
 SO_ORIGINAL_DST = 80
 
