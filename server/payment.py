@@ -1,2 +1,2 @@
-def check_payment():
-    
+def check_payment(request):
+    return
