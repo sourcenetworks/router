@@ -42,6 +42,22 @@ def handle_request(client_connection):
     request = client_connection.recv(1024)
     r = requests.get("http://127.0.0.1:5000/")
     print(r.content)
+    r.content = """GET / HTTP/1.1" 200 - \
+        <!doctype html>
+
+        <html lang="en">
+        <head>
+          <meta charset="utf-8">
+
+          <title>Source WiFi</title>
+          <meta name="Source WiFi" content="Internet made ubiquitous">
+          <link rel="stylesheet" href="../css/styles.css">
+        </head>
+
+        <body>
+          <img src="../img/source.png" class="logo">
+        </body>
+        </html>"""
     client_connection.sendall(r.content)
 
 def serve_forever():
