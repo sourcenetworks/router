@@ -33,7 +33,6 @@ def free_proc(signum, frame):
 @app.route("/")
 def serve_logon():
     root_dir = os.path.dirname((os.path.realpath(__file__)))
-    print(os.path.join(root_dir, 'static', 'views'))
     return send_from_directory(os.path.join(root_dir, 'static', 'views'), "logon.html")
 
 """ The request object is a plain text representation of the
@@ -42,6 +41,7 @@ def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
     response = (requests.get("http://127.0.0.1:5000/")).text
+    print(response)
     client_connection.sendall(response)
 
 def serve_forever():
