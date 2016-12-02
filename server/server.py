@@ -34,21 +34,7 @@ def handle_request(client_connection):
 content-length: 287
 content-type: text/html
 
-<!doctype html>
-
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Source WiFi</title>
-  <meta name="Source WiFi" content="Internet made ubiquitous">
-  <link rel="stylesheet" href="../css/styles.css">
-</head>
-
-<body>
-  <img src="../img/source.png" class="logo">
-</body>
-</html>
+Hello
 """
     client_connection.sendall(response)
 
