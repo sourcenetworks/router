@@ -4,7 +4,7 @@ import signal
 import socket
 import struct
 
-SERVER_ADDRESS = (HOST, PORT) = '', 9090
+SERVER_ADDRESS = (HOST, PORT) = '', 80
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
 SO_ORIGINAL_DST = 80
 
@@ -41,8 +41,6 @@ def serve_forever():
     while True:
         try:
             client_connection, client_address = listen_socket.accept()
-            data = client_connection.getsockopt(socket.SOL_IP,
-                SO_ORIGINAL_DST, 16)
 
         except IOError as e:
             code, msg = e.args
