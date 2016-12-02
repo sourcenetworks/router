@@ -30,7 +30,8 @@ def handle_request(client_connection):
     print(r.content)
     print(str(r.headers))
 
-    response = b"""HTTP/1.1 200 OK \
+    response = b"""\
+HTTP/1.1 200 OK 
 content-length: 287
 content-type: text/html
 
