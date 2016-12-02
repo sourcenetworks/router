@@ -9,7 +9,7 @@ def serve_logon():
 
 def check_payment(request):
     if registered == False:
-        app.run()
+        app.run(host='::', port=9000)
         serve_logon()
 
     return
