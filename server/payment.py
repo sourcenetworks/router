@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 
 app = Flask(__name__, static_url_path="/templates/views/")
 
@@ -10,6 +10,7 @@ def serve_logon():
 
 def check_payment(request):
     if registered == False:
+        app.run()
         serve_logon()
 
     return
