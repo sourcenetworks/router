@@ -5,6 +5,6 @@ registered = False
 
 def check_payment(request):
     if register == False:
-        send_static_file("logon.html")
+        return app.send_static_file("logon.html")
 
     return

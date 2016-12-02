@@ -28,14 +28,6 @@ def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
     response = check_payment(request)
-    response = b"""\
-     HTTP/1.1 200 OK
-     Date: Fri, 31 Dec 1999 23:59:59 GMT
-     Content-Type: HTML
-     Content-Length: 4
-
-     <html><body><h1>Hello, world</h1></body></html>
-     """
     client_connection.sendall(response)
 
 def serve_forever():
