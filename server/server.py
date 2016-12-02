@@ -5,6 +5,7 @@ import socket
 import struct
 from payment import check_payment
 
+import requests
 from flask import Flask, render_template
 app = Flask(__name__)
 
