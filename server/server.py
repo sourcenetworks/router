@@ -40,7 +40,7 @@ def serve_logon():
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    r = requests.get("http://127.0.0.1:5000/"))
+    r = requests.get("http://127.0.0.1:5000/")
     print(r.content)
     client_connection.sendall(r.content)
 
