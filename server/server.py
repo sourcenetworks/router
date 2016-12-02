@@ -53,6 +53,7 @@ def handle_request(client_connection):
         </head>
 
         <body>
+          Test
           <img src="../img/source.png" class="logo">
         </body>
         </html>"""
