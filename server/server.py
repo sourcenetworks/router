@@ -32,7 +32,8 @@ def free_proc(signum, frame):
 
 @app.route("/")
 def serve_logon():
-    return send_from_directory(STATICFILES_DIRS, "logon.html")
+    root_dir = os.path.dirname(os.getcwd())
+    return send_from_directory(os.path.join(root_dir, 'static', 'views'), "logon.html")
 
 """ The request object is a plain text representation of the
     inbound request """
