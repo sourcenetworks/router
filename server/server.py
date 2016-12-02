@@ -6,7 +6,7 @@ import struct
 from payment import check_payment
 
 import requests
-from flask import Flask, render_template
+from flask import Flask, server_
 app = Flask(__name__)
 
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
@@ -28,7 +28,7 @@ def free_proc(signum, frame):
 
 @app.route("/")
 def serve_logon():
-    return render_template("/templates/views/logon.html")
+    return app.send_static_file("/templates/views/logon.html")
 
 """ The request object is a plain text representation of the
     inbound request """
