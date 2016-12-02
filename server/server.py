@@ -28,7 +28,7 @@ def handle_request(client_connection):
     request = client_connection.recv(1024)
     r = requests.get('http://localhost:5000/')
     print(r.raw)
-    client_connection.sendall(r.raw)
+    client_connection.sendall(r.content)
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
