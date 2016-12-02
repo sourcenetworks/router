@@ -68,8 +68,6 @@ def serve_forever():
             client_connection.close()  # close parent copy and loop over
 
 if __name__ == '__main__':
-    app.run()
-
     pid = os.fork()
     if pid == 0:  # child
         app.run()
