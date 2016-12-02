@@ -29,7 +29,6 @@ def handle_request(client_connection):
     r = requests.get('http://localhost:5000/')
     print(r.content)
     print(str(r.headers))
-    response =
     client_connection.sendall(r.content)
 
 def serve_forever():
