@@ -5,6 +5,9 @@ import socket
 import struct
 from payment import check_payment
 
+from flask import Flask, render_template
+app = Flask(__name__)
+
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
 SO_ORIGINAL_DST = 80
@@ -22,12 +25,16 @@ def free_proc(signum, frame):
         if pid == 0:  # no more zombies
             return
 
+@app.route("/")
+def serve_logon():
+    return render_template("logon.html")
+
 """ The request object is a plain text representation of the
     inbound request """
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    response = check_payment(request)
+    response = serve_logon()
     client_connection.sendall(response)
 
 def serve_forever():
@@ -61,4 +68,8 @@ def serve_forever():
             client_connection.close()  # close parent copy and loop over
 
 if __name__ == '__main__':
-    serve_forever()
+    pid = os.fork()
+    if pid == 0:  # child
+        app.run()
+    else:  # parent
+        serve_forever()
