@@ -32,7 +32,6 @@ def free_proc(signum, frame):
 
 @app.route("/")
 def serve_logon():
-    root_dir = os.path.dirname(os.getcwd())
     return send_from_directory(os.path.join(STATICFILES_DIRS, "views"),
         "logon.html")
 
