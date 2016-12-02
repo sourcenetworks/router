@@ -6,7 +6,7 @@ import struct
 from payment import check_payment
 
 import requests
-from flask import Flask
+from flask import Flask, send_from_directory
 app = Flask(__name__)
 
 STATICFILES_DIRS = (
@@ -33,7 +33,7 @@ def free_proc(signum, frame):
 @app.route("/")
 def serve_logon():
     root_dir = os.path.dirname(os.getcwd())
-    return app.send_static_file(os.path.join(STATICFILES_DIRS, "templates"), 
+    return send_from_directory(os.path.join(STATICFILES_DIRS, "templates"),
         "logon.html")
 
 """ The request object is a plain text representation of the
