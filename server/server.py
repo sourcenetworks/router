@@ -27,12 +27,12 @@ def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
     #r = requests.get('http://localhost:5000/')
-    response = b"""\
+    http_response = b"""\
 HTTP/1.1 200 OK
 
-Hello
+Hello, World!
 """
-    client_connection.sendall(response)
+    client_connection.sendall(http_response)
 
 def serve_forever():
     listen_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
