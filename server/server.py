@@ -34,7 +34,7 @@ def serve_logon():
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
-    response = serve_logon()
+    response = requests.get("/")
     client_connection.sendall(response)
 
 def serve_forever():
@@ -68,6 +68,8 @@ def serve_forever():
             client_connection.close()  # close parent copy and loop over
 
 if __name__ == '__main__':
+    app.run()
+
     pid = os.fork()
     if pid == 0:  # child
         app.run()
