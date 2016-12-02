@@ -26,6 +26,7 @@ def free_proc(signum, frame):
 def handle_request(client_connection):
     print('Handling request')
     request = client_connection.recv(1024)
+    print(request.decode())
     #r = requests.get('http://localhost:5000/')
     http_response = b"""\
 HTTP/1.1 200 OK
