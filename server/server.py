@@ -9,6 +9,10 @@ import requests
 from flask import Flask
 app = Flask(__name__)
 
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), "static")
+)
+
 SERVER_ADDRESS = (HOST, PORT) = '', 9090
 REQUEST_QUEUE_SIZE = 1024 # Should this be increased?
 SO_ORIGINAL_DST = 80
@@ -29,8 +33,8 @@ def free_proc(signum, frame):
 @app.route("/")
 def serve_logon():
     root_dir = os.path.dirname(os.getcwd())
-    return app.send_static_file((os.path.join(root_dir, 'templates', 'views'),
-        "logon.html"))
+    return app.send_static_file(os.path.join(STATICFILES_DIRS, "templates"), 
+        "logon.html")
 
 """ The request object is a plain text representation of the
     inbound request """
