@@ -28,7 +28,7 @@ def free_proc(signum, frame):
 
 @app.route("/")
 def serve_logon():
-    return render_template("logon.html")
+    return render_template("templates/views/logon.html")
 
 """ The request object is a plain text representation of the
     inbound request """
