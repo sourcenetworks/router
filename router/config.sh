@@ -3,17 +3,13 @@ sudo apt-get update -y
 sudo apt-get install dnsmasq hostapd -y
 
 # Configure hostapd (configuration for access point)
-echo "denyinterfaces wlan0" >> /etc/dhcpcd.conf
 sudo cp interfaces /etc/network/interfaces
-sudo service dhcpcd restart
-sudo ifdown wlan0; sudo ifup wlan0
-
 sudo cp hostapd.conf /etc/hostapd/hostapd.conf
-sudo sed -i '/#DAEMON_CONF=""/c\DAEMON_CONF="/etc/hostapd/hostapd.conf"' \
-  /etc/default/hostapd
+sudo sed -i "/DAEMON_CONF=/c\DAEMON_CONF=/etc/hostapd/hostapd.conf" \
+  /etc/init.d/hostapd
 
 # Configure dnsmasq (DHCP/DNS server)
-sudo cp hostapd.conf /etc/hostapd/hostapd.conf
+sudo cp dnsmasq.conf /etc/dnsmasq.conf
 
 # Configure iptables
 sudo iptables -F
@@ -25,6 +21,6 @@ sudo iptables -i wlan0 -A INPUT -j DROP
 sudo sh -c "iptables-save > /etc/iptables.rules"
 
 # Run
-sudo service hostapd start
-sudo service dnsmasq start
+sudo update-rc.d hostapd defaults
+sudo update-rc.d dnsmasq defaults
 sudo reboot
